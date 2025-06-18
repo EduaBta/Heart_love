@@ -1,0 +1,126 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #ffcce6, #ffb3d9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Pacifico', 'Dancing Script', cursive;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    position: relative;
+}
+
+#heart-shooter {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 30px;
+    position: relative;
+    transition: all 0.5s;
+    filter: drop-shadow(0 0 10px rgba(255, 20, 147, 0.5));
+}
+
+#heart-shooter::before, #heart-shooter::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 50px;
+    height: 80px;
+    background: #ff69b4;
+    border-radius: 50px 50px 0 0;
+    transition: all 0.3s;
+}
+
+#heart-shooter::before {
+    left: 50px;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+}
+
+#heart-shooter::after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+}
+
+.heart {
+    position: absolute;
+    font-size: 24px;
+    color: #ff1493;
+    animation: float 2s ease-in-out forwards;
+}
+
+@keyframes float {
+    0% { transform: translate(0, 0) scale(1); opacity: 1; }
+    100% { transform: translate(var(--tx), var(--ty)) scale(0.4); opacity: 0; }
+}
+
+#final-heart {
+    font-size: 0;
+    color: #ff1493;
+    animation: none;
+    transition: all 1s;
+}
+
+#final-heart.pulse {
+    font-size: 120px;
+    animation: heartbeat 1.5s infinite;
+    margin: 20px 0;
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    25% { transform: scale(1.1); }
+    50% { transform: scale(1); }
+    75% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+#message {
+    font-size: 2.5rem;
+    color: #ff1493;
+    margin: 20px 0;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+#message.show {
+    opacity: 1;
+}
+
+.hidden {
+    display: none;
+}
+
+#start-btn {
+    padding: 12px 25px;
+    font-size: 1.5rem;
+    background: #ff69b4;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: 'Dancing Script', cursive;
+    transition: all 0.3s;
+}
+
+#start-btn:hover {
+    background: #ff1493;
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+}
+
+@keyframes rain {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
